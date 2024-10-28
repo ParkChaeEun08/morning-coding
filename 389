@@ -1,0 +1,11 @@
+String findTheDifference(String s, String t) {
+  int sSum = s.runes.fold(0, (sum, char) => sum + char);
+  int tSum = t.runes.fold(0, (sum, char) => sum + char);
+  return String.fromCharCode(tSum - sSum);
+}
+
+void main() {
+  print(findTheDifference("abcd", "abcde")); 
+  print(findTheDifference("", "y")); 
+  print(findTheDifference("aabbcc", "aabbcce")); 
+}

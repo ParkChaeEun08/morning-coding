@@ -1,0 +1,19 @@
+int strStr(String haystack, String needle) {
+  if (needle.isEmpty) return 0;
+  for (int i = 0; i <= haystack.length - needle.length; i++) {
+    if (haystack.substring(i, i + needle.length) == needle) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+void main() {
+  String haystack1 = "sadbutsad";
+  String needle1 = "sad";
+  print(strStr(haystack1, needle1));
+
+  String haystack2 = "leetcode";
+  String needle2 = "leeto";
+  print(strStr(haystack2, needle2));
+}
