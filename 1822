@@ -1,0 +1,27 @@
+class Solution {
+  int arraySign(List<int> nums) {
+    int sign = 1;
+
+    for (var num in nums) {
+        if (num == 0) {
+            return 0;
+        }
+        if (num < 0) {
+            sign *= -1;
+        }
+    }
+
+    return sign;
+  }
+
+  void main() {
+    List<int> nums1 = [-1, -2, -3, -4, 3, 2, 1];
+    print(arraySign(nums1));
+
+    List<int> nums2 = [1,5,0,2,-3];
+    print(arraySign(nums2));
+
+    List<int> nums3 = [-1, 2, -3, 4];
+    print(arraySign(nums3));
+  }
+}
