@@ -1,0 +1,25 @@
+class Solution {
+  int calPoints(List<String> operations) {
+    List<int>record = [];
+
+    for(String operation in operations) {
+        if(operation == 'C') {
+            if(record.isNotEmpty) {
+                record.removeLast();
+            }
+        } else if (operation == 'D') {
+            if(record.isNotEmpty) {
+                record.add(record.last*2);
+            }
+        } else if(operation == '+') {
+            if(record.length >= 2) {
+                record.add(record[record.length - 1] + record[record.length - 2]);
+            }
+        } else {
+            record.add(int.parse(operation));
+        }
+    }
+
+    return record.fold(0,(sum,score) => sum + score);
+  }
+}
