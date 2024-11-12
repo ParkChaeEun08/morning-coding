@@ -1,0 +1,40 @@
+class Solution {
+  String tictactoe(List<List<int>> moves) {
+  Set<String> aMoves = {};
+  Set<String> bMoves = {};
+  List<List<String>> winConditions = [
+    ['00', '01', '02'],
+    ['10', '11', '12'], 
+    ['20', '21', '22'], 
+    ['00', '10', '20'], 
+    ['01', '11', '21'], 
+    ['02', '12', '22'], 
+    ['00', '11', '22'], 
+    ['02', '11', '20']  
+  ];
+  for (int i = 0; i < moves.length; i++) {
+    String move = '${moves[i][0]}${moves[i][1]}';
+    if (i % 2 == 0) {
+      aMoves.add(move);
+    } else {
+      bMoves.add(move);
+    }
+  }
+
+  bool checkWinner(Set<String> playerMoves) {
+    for (var condition in winConditions) {
+      if (condition.every((move) => playerMoves.contains(move))) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  if (checkWinner(aMoves)) return 'A';
+  if (checkWinner(bMoves)) return 'B';
+
+  if (moves.length == 9) return 'Draw';
+
+  return 'Pending';
+}
+}
