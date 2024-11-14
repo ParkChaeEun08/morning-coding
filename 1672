@@ -1,0 +1,12 @@
+class Solution {
+  int maximumWealth(List<List<int>> accounts) {
+    int maxWealth = 0;
+    for(var account in accounts) {
+        int currentWealth = account.reduce((sum, money) => sum + money);
+        if (currentWealth > maxWealth) {
+            maxWealth = currentWealth;
+        }
+    }
+    return maxWealth;
+  }
+}
