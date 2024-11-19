@@ -1,0 +1,47 @@
+class Solution {
+  void setZeroes(List<List<int>> matrix) {
+    int m = matrix.length;
+    int n = matrix[0].length;
+    Set<int> zeroRows = {};
+    Set<int> zeroCols = {};
+    
+    int i = 0;
+    int j = 0;
+
+    while (i < m) {
+        while (j < n) {
+            if (matrix[i][j] == 0) {
+                zeroRows.add(i);
+                zeroCols.add(j);
+            } 
+            j++;
+        }
+        j = 0; //열 인덱스 초기화
+        i++;
+    }
+
+    i = 0;
+    while (i < m) {
+        if (zeroRows.contains(i)) {
+            j = 0;
+            while (j < n) {
+                matrix[i][j] = 0;
+                j++;
+            }
+        }
+        i++;
+    }
+
+    j = 0;
+    while (j < n) {
+        if (zeroCols.contains(j)) {
+            i = 0;
+            while (i < m) {
+                matrix[i][j] = 0;
+                i++;
+            }
+        }
+        j++;
+    }
+  }
+}
