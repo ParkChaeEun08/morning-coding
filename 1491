@@ -1,0 +1,21 @@
+class Solution {
+  double average(List<int> salary) {
+    int minSalary = salary[0];
+    int maxSalary = salary[0];
+    int sum = 0;
+
+    // 최소값, 최대값 찾고 전체 합계 구함
+    for (int s in salary) {
+        if (s < minSalary) minSalary = s;
+        if (s > maxSalary) maxSalary = s;
+        sum += s;
+    }
+    // 최소값, 최대값을 합계에서 뺌
+    sum -= (minSalary + maxSalary);
+
+    // 평균 계산
+    double average = sum / (salary.length - 2);
+
+    return average;
+  }
+}
