@@ -1,0 +1,27 @@
+class Solution {
+  int largestPerimeter(List<int> nums) {
+    // 내림차순 정렬
+    nums.sort((a,b) => b.compareTo(a));
+
+    // 삼각형 조건을 만족하는지 확인
+    var iter = nums.iterator;
+    bool found = flase;
+    int i =0;
+    int perimeter = 0;
+
+    iter.moveNext();
+    while (!found && iter.moveNext() && (i < nums.length -2)) {
+        int a = nums[i];
+        int b = nums[i + 1];
+        int c = nums[i + 2];
+
+        if (a < b + c) {
+            perimeter = a + b + c;
+            found = true;
+        }
+        i++;
+    }
+
+    return perimeter;
+  }
+}
