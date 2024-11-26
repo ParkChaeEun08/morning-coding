@@ -1,0 +1,17 @@
+class Solution {
+  String addBinary(String a, String b) {
+  if (a.isEmpty) return b;
+  if (b.isEmpty) return a;
+
+  int lastBitA = a[a.length - 1] == '1' ? 1 : 0;
+  int lastBitB = b[b.length - 1] == '1' ? 1 : 0;
+  int carry = (lastBitA + lastBitB) >> 1;
+  int lastBit = (lastBitA + lastBitB) & 1;
+  
+  String partialResult = addBinary(a.length > 1 ? a.substring(0, a.length - 1) : '', b.length > 1 ? b.substring(0, b.length - 1) : '');
+  if (carry == 1) {
+    partialResult = addBinary(partialResult, "1");
+  }
+  return partialResult + lastBit.toString();
+  }
+}
