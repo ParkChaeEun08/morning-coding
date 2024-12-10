@@ -1,0 +1,21 @@
+class Solution {
+  String reverseVowels(String s) {
+    String vowels = 'aeiouAEIOU';
+    List<String> chars = s.split('');
+    List<String> vowelsQueue = [];
+    List<int> vowelsIndex = [];
+
+    for (int i = 0; i < chars.length; i++) {
+        if (vowels.contains(chars[i])) {
+            vowelsQueue.add(chars[i]);
+            vowelsIndex.add(i);
+        }
+    }
+
+    for (int i = vowelsQueue.length - 1; i >= 0; i--) {
+        chars[vowelsIndex[vowelsQueue.length - 1 - i]] = vowelsQueue[i];
+    }
+
+    return chars.join('');
+  }
+}
