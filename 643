@@ -1,0 +1,35 @@
+class Solution {
+  double findMaxAverage(List<int> nums, int k) {
+  double sum = 0;
+  for (int i = 0; i < k; i++) {
+    sum += nums[i];
+  }
+  
+  double maxAverage = sum / k;
+  int i = k;
+  
+  while (i < nums.length) {
+    sum += nums[i] - nums[i - k];
+    double currentAverage = sum / k;
+    if (currentAverage > maxAverage) {
+      maxAverage = currentAverage;
+    }
+    i++;
+  }
+  
+  return double.parse(maxAverage.toStringAsFixed(5));
+}
+
+void main() {
+  List<int> nums1 = [1, 12, -5, -6, 50, 3];
+  int k1 = 4;
+  double result1 = findMaxAverage(nums1, k1);
+  print(result1); 
+  
+  List<int> nums2 = [5];
+  int k2 = 1;
+  double result2 = findMaxAverage(nums2, k2);
+  print(result2); 
+}
+
+}
