@@ -1,0 +1,20 @@
+class Solution {
+  List<List<int>> findDifference(List<int> nums1, List<int> nums2) {
+    List<int> answer1 = [];
+    List<int> answer2 = [];
+
+    for (int num in nums1) {
+        if (!nums2.contains(num) && !answer1.contains(num)) {
+            answer1.add(num);
+        }
+    }
+
+    for (int num in nums2) {
+        if (!nums1.contains(num) && !answer2.contains(num)) {
+            answer2.add(num);
+        }
+    }
+
+    return [answer1, answer2];
+  }
+}
