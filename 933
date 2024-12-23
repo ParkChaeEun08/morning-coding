@@ -1,0 +1,19 @@
+class RecentCounter {
+
+List<int> _requests = [];
+  RecentCounter() {
+    _requests = [];
+  }
+  
+  int ping(int t) {
+    _requests.add(t);
+    _requests.removeWhere((time) => time < t - 3000);
+    return _requests.length;
+  }
+}
+
+/**
+ * Your RecentCounter object will be instantiated and called as such:
+ * RecentCounter obj = RecentCounter();
+ * int param1 = obj.ping(t);
+ */
