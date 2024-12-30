@@ -1,0 +1,11 @@
+class Solution {
+  String reverseWords(String s) {
+    List<String> words = s.trim().split(' ');
+
+    words.removeWhere((word) => word.isEmpty);
+
+    words = words.reversed.toList();
+
+    return words.join(' ');
+  }
+}
