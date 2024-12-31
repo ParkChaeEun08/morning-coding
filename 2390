@@ -1,0 +1,19 @@
+class Solution {
+  String removeStars(String s) {
+    List<String> result = [];
+    int i = 0;
+    
+    while (i < s.length) {
+        if (s[i] == '*') {
+            if (result.isNotEmpty) {
+                result. removeLast();
+            }
+        } else {
+            result.add(s[i]);
+        }
+        i++;
+    }
+
+    return result.join('');
+  }
+}
