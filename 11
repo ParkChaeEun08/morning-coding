@@ -20,3 +20,32 @@ void main() {
   List<int> heights = [1, 8, 6, 2, 5, 4, 8, 3, 7];
   print("최대 물 저장 용량: ${maxArea(heights)}");
 }
+
+
+
+
+class Solution {
+ int maxArea(List<int> height) {
+  int maxCapacity = 0;
+  int left = 0;
+  int right = height.length - 1;
+
+  while (left < right) {
+    int minHeight = height[left] < height[right] ? height[left] : height[right];
+    int width = right - left;
+    int currentCapacity = minHeight * width;
+
+    if (currentCapacity > maxCapacity) {
+      maxCapacity = currentCapacity;
+    }
+
+    if (height[left] < height[right]) {
+      left++;
+    } else {
+      right--;
+    }
+  }
+
+  return maxCapacity;
+  }
+}
