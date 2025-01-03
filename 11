@@ -1,0 +1,22 @@
+int maxArea(List<int> height) {
+  int maxCapacity = 0;
+
+  for (int i = 0; i < height.length - 1; i++) {
+    for (int j = i + 1; j < height.length; j++) {
+      int minHeight = height[i] < height[j] ? height[i] : height[j];
+      int width = j - i;
+      int currentCapacity = minHeight * width;
+
+      if (currentCapacity > maxCapacity) {
+        maxCapacity = currentCapacity;
+      }
+    }
+  }
+
+  return maxCapacity;
+}
+
+void main() {
+  List<int> heights = [1, 8, 6, 2, 5, 4, 8, 3, 7];
+  print("최대 물 저장 용량: ${maxArea(heights)}");
+}
